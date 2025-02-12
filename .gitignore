@@ -1,0 +1,45 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+*.a
+
+# Compiled Object Files
+*.o
+*.obj
+
+# Go Build and Cache Directories
+/bin/
+/pkg/
+/dist/
+*.test
+
+# Go Module and Vendor Files
+go.sum
+go.work
+go.work.sum
+vendor/
+
+# Logs and Debug Files
+*.log
+*.trace
+*.prof
+
+# Temporary and Swap Files
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# IDE and Editor Settings
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Environment Files
+.env
+.env.local
