@@ -4,7 +4,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"log"
 	"template-2025-feb/internal/config"
 )
 
@@ -14,6 +13,9 @@ var httpCmd = &cobra.Command{
 	Short: "Start the Fiber HTTP server",
 	Run: func(cmd *cobra.Command, args []string) {
 		config.LoadConfig(".env")
+		config.InitLogger()
+
+		config.Logger.Info("Starting HTTP server...")
 		startHTTPServer()
 	},
 }
@@ -26,7 +28,7 @@ func startHTTPServer() {
 		port = "9090"
 	}
 
-	log.Fatal(app.Listen(":" + port))
+	config.Logger.Fatal(app.Listen(":" + port))
 }
 
 func init() {
