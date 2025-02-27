@@ -14,6 +14,7 @@ var httpCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		config.LoadConfig(".env")
 		config.InitLogger()
+		config.InitDB()
 
 		config.Logger.Info("Starting HTTP server...")
 		startHTTPServer()

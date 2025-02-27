@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/spf13/viper"
@@ -28,12 +27,12 @@ func InitDB() {
 
 	db, err := gorm.Open(postgres.Open(dsn), gormConfig)
 	if err != nil {
-		log.Fatalf("Failed to connect to database: %v", err)
+		Logger.Fatal("Failed to connect to database: ", err)
 	}
 
 	sqlDB, err := db.DB()
 	if err != nil {
-		log.Fatalf("Failed to get database instance: %v", err)
+		Logger.Fatal("Failed to get database instance: ", err)
 	}
 
 	sqlDB.SetMaxIdleConns(10)
@@ -41,5 +40,5 @@ func InitDB() {
 	sqlDB.SetConnMaxLifetime(5 * time.Minute)
 
 	DB = db
-	log.Println("Database connection established successfully!")
+	Logger.Info("Database connection established successfully!")
 }
