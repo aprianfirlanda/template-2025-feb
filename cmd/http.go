@@ -1,22 +1,26 @@
 package cmd
 
 import (
-	"fmt"
-	"github.com/common-nighthawk/go-figure"
-
+	"github.com/gofiber/fiber/v2"
 	"github.com/spf13/cobra"
+	"log"
 )
 
-// httpCmd represents the http command
+// httpCmd represents the command to start the Fiber HTTP server
 var httpCmd = &cobra.Command{
 	Use:   "http",
-	Short: "A command to start http server",
-	Long:  `A command t start http server that use go fiber library`,
+	Short: "Start the Fiber HTTP server",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("created by aprianfirlanda@gmail.com")
-		httpServer := figure.NewFigure("Http Server", "big", true)
-		fmt.Println(httpServer.String())
+		startHTTPServer()
 	},
+}
+
+func startHTTPServer() {
+	app := fiber.New()
+
+	port := "9090"
+
+	log.Fatal(app.Listen(":" + port))
 }
 
 func init() {
