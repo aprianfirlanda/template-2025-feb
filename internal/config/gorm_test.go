@@ -17,6 +17,7 @@ func TestInitDB(t *testing.T) {
 	os.Setenv("DB_NAME", "mydatabase")
 
 	viper.AutomaticEnv()
+	InitLogger()
 	InitDB()
 
 	assert.NotNil(t, DB, "Database instance should not be nil")
